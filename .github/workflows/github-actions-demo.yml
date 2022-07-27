@@ -18,9 +18,9 @@ jobs:
           username: ${{ secrets.DOCKER_HUB_USERNAME }}
           password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
       - name: Build the image
-        run: docker build -f Dockerfile.dev .
+        run: docker build -f Dockerfile.dev -t wadahesam/frontend:latest .
       - name: Run tests
-        run: docker run -v /app/node_modules -v $(pwd):/app  a7c2f9897bd8 npm run test 
+        run: docker run -v /app/node_modules -v $(pwd):/app wadahesam/frontend:latest npm run test 
 
       #   name: Set up Docker Buildx
       #   uses: docker/setup-buildx-action@v1
